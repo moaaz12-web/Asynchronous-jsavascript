@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="content">
+
+    </div>
+
+    <button id="myBtn" onclick="getData()">Click here to populate!</button>
+
+
+    <script>
+        console.log("First Print statement")
+        btn = document.getElementById('myBtn')
+        div = document.getElementById('content')
+// fetcu.url will return a promise, so we resole it using .then
+//We resolve it in .then in the form of an arrow function.
+//That function also returns a promise so we resolve it using another .then
+
+        function getData(){
+            console.log("Inside get data function")
+            url = 'https://api.themoviedb.org/3/movie/popular?&api_key=f536ce9a181c3ab1e48ec40c2747b4cd&language=en-US&page=1'
+
+            fetch(url).then((res) => {
+                console.log('Inside First then of get data function')
+                return res.json()
+            }).then((data)=>{
+                console.log('Inside second then of get data')
+                    console.log(data.results)
+            })
+        }
+
+        
+        // console.log('Before calling get Data function');
+        // getData()
+        // console.log('After calling get data function');
+        
+
+        function postData(){
+            url ='https://dummy.restapiexample.com/api/v1/create'
+            data='{"name":"moaaz545","salary":"123","age":"23"}'
+            params={
+                method:'post',headers:{'Content-Type' : 'application/json'
+                }, 
+                body:data
+            }
+//jab arrow func me aik parmeter ho and aik return stmnt ho to ye one liner likhdo
+            fetch(url, params).then(response=> response.json()).then(data=>console.log(data))
+        }
+
+        postData()
+
+
+        </script>
+    
+</body>
+</html>

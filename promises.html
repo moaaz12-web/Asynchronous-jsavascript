@@ -1,0 +1,42 @@
+<!-- A promise can either be resolved or rejected. -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="content"></div>
+    <script>
+
+        //creating a new promise
+        let p = new Promise((resolve, reject) => {
+            //this is what the promise does if it succeeds -->
+            let a = 1 + 4;
+
+            if (a === 2) {
+            resolve("success");
+            } else {
+            reject("failed");
+            }
+        });
+        
+        //interacting with the promise!
+        p.then((msg) => {
+            document.write(
+            "Then method called, because promise was resolved " + msg
+            );
+        }).catch((msg) => {
+            document.write(
+            "Catch method called, because promise was rejected " + msg
+            );
+        });
+
+
+
+        //promises are meant to replace callbacks
+    </script>
+  </body>
+</html>
